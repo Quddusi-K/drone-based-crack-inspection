@@ -1,0 +1,5 @@
+# Loss ablation: plain BCE
+experiment_name: unet_clahe_aug_bce
+preprocessing: {pipeline: contrast}
+augmentation: {enabled: true}
+loss: {name: bce}

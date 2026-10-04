@@ -1,0 +1,5 @@
+# Loss ablation: Tversky loss (beta>alpha favours recall of thin cracks)
+experiment_name: unet_clahe_aug_tversky
+preprocessing: {pipeline: contrast}
+augmentation: {enabled: true}
+loss: {name: tversky, alpha: 0.3, beta: 0.7}

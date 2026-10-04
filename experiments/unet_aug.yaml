@@ -1,0 +1,4 @@
+# Ablation: raw images + augmentation + U-Net
+experiment_name: unet_aug
+preprocessing: {pipeline: raw}
+augmentation: {enabled: true}

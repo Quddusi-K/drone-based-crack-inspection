@@ -1,0 +1,7 @@
+{
+  "best_val_global_dice": 0.001573014069736957,
+  "best_epoch": 2,
+  "checkpoint": "/home/quddussi/Personal/drone-based-crack-inspection/results/008_unet_clahe_aug_bce/best.pt",
+  "n_params": 1942577,
+  "device": "cpu"
+}

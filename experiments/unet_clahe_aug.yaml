@@ -1,0 +1,5 @@
+# Experiment E: CLAHE + augmentation + U-Net. Experiment F (= E + morphological refinement)
+# is reported automatically by evaluate.py as the "refined" row of this experiment.
+experiment_name: unet_clahe_aug
+preprocessing: {pipeline: contrast}
+augmentation: {enabled: true}

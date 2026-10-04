@@ -1,0 +1,4 @@
+# Experiment D / ablation: CLAHE-preprocessed images + U-Net
+experiment_name: unet_clahe
+preprocessing: {pipeline: contrast}
+augmentation: {enabled: false}

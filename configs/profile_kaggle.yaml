@@ -1,0 +1,6 @@
+# Kaggle GPU profile: full dataset, larger model/images, full schedule.
+dataset: {path: /kaggle/input/crack-segmentation-dataset, image_size: 448, batch_size: 16, num_workers: 4}
+model: {params: {base_channels: 32, depth: 4}}
+training: {epochs: 40, early_stopping_patience: 8, amp: true}
+results_dir: /kaggle/working/results
+checkpoints_dir: /kaggle/working/checkpoints

@@ -1,0 +1,263 @@
+[
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 1.0,
+    "dice": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tolerant_iou": 1.0,
+    "n_gt_components": 0,
+    "n_pred_components": 0,
+    "name": "noncrack_noncrack_concrete_wall_14_7"
+  },
+  {
+    "categories": [
+      "false_negative"
+    ],
+    "iou": 0.0,
+    "dice": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "tolerant_iou": 0.0,
+    "n_gt_components": 0,
+    "n_pred_components": 0,
+    "name": "Rissbilder_for_Florian_9S6A2861_717_103_2668_2641"
+  },
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 1.0,
+    "dice": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tolerant_iou": 1.0,
+    "n_gt_components": 0,
+    "n_pred_components": 0,
+    "name": "Rissbilder_for_Florian_9S6A2865_1192_2006_2610_3120"
+  },
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 1.0,
+    "dice": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tolerant_iou": 1.0,
+    "n_gt_components": 0,
+    "n_pred_components": 0,
+    "name": "noncrack_noncrack_concrete_wall_102_0"
+  },
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 1.0,
+    "dice": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tolerant_iou": 1.0,
+    "n_gt_components": 0,
+    "n_pred_components": 0,
+    "name": "noncrack_noncrack_concrete_wall_102_3"
+  },
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 1.0,
+    "dice": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tolerant_iou": 1.0,
+    "n_gt_components": 0,
+    "n_pred_components": 0,
+    "name": "noncrack_noncrack_concrete_wall_102_7"
+  },
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 1.0,
+    "dice": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tolerant_iou": 1.0,
+    "n_gt_components": 0,
+    "n_pred_components": 0,
+    "name": "noncrack_noncrack_concrete_wall_15_5"
+  },
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 1.0,
+    "dice": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tolerant_iou": 1.0,
+    "n_gt_components": 0,
+    "n_pred_components": 0,
+    "name": "Rissbilder_for_Florian_9S6A2812_949_217_2174_2045"
+  },
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 1.0,
+    "dice": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tolerant_iou": 1.0,
+    "n_gt_components": 0,
+    "n_pred_components": 0,
+    "name": "Rissbilder_for_Florian_9S6A2861_958_540_2433_1893"
+  },
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 1.0,
+    "dice": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tolerant_iou": 1.0,
+    "n_gt_components": 0,
+    "n_pred_components": 0,
+    "name": "noncrack_noncrack_concrete_wall_14_32"
+  },
+  {
+    "categories": [
+      "boundary_error",
+      "merging"
+    ],
+    "iou": 0.286034353995519,
+    "dice": 0.4448315911730546,
+    "precision": 0.3059105431309904,
+    "recall": 0.8148936170212766,
+    "tolerant_iou": 0.6750254151135209,
+    "n_gt_components": 6,
+    "n_pred_components": 2,
+    "name": "CFD_059"
+  },
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 0.4030642309958751,
+    "dice": 0.5745485090298194,
+    "precision": 0.47139903514817366,
+    "recall": 0.7354838709677419,
+    "tolerant_iou": 0.5930359085963003,
+    "n_gt_components": 3,
+    "n_pred_components": 2,
+    "name": "CFD_083"
+  },
+  {
+    "categories": [
+      "boundary_error"
+    ],
+    "iou": 0.35969509290138163,
+    "dice": 0.5290819901892081,
+    "precision": 0.41483516483516486,
+    "recall": 0.730174081237911,
+    "tolerant_iou": 0.6514623021196673,
+    "n_gt_components": 1,
+    "n_pred_components": 1,
+    "name": "CFD_051"
+  },
+  {
+    "categories": [
+      "merging"
+    ],
+    "iou": 0.2863227638428774,
+    "dice": 0.4451802796173657,
+    "precision": 0.3264975715056665,
+    "recall": 0.6994219653179191,
+    "tolerant_iou": 0.5718916415837,
+    "n_gt_components": 4,
+    "n_pred_components": 2,
+    "name": "CFD_064"
+  },
+  {
+    "categories": [
+      "boundary_error"
+    ],
+    "iou": 0.40315221899626713,
+    "dice": 0.5746378953591487,
+    "precision": 0.5065138092756644,
+    "recall": 0.6639344262295082,
+    "tolerant_iou": 0.6151371807000946,
+    "n_gt_components": 2,
+    "n_pred_components": 2,
+    "name": "CFD_084"
+  },
+  {
+    "categories": [
+      "merging"
+    ],
+    "iou": 0.2761970853573907,
+    "dice": 0.4328439369222403,
+    "precision": 0.3090062111801242,
+    "recall": 0.7223230490018149,
+    "tolerant_iou": 0.59225150841537,
+    "n_gt_components": 7,
+    "n_pred_components": 3,
+    "name": "CFD_100"
+  },
+  {
+    "categories": [
+      "good"
+    ],
+    "iou": 0.5909333333333333,
+    "dice": 0.7428762990278244,
+    "precision": 0.6607036374478235,
+    "recall": 0.8483920367534457,
+    "tolerant_iou": 0.7875542691751085,
+    "n_gt_components": 1,
+    "n_pred_components": 1,
+    "name": "CFD_041"
+  },
+  {
+    "categories": [
+      "merging"
+    ],
+    "iou": 0.2688927943760984,
+    "dice": 0.42382271468144045,
+    "precision": 0.36661341853035145,
+    "recall": 0.5021881838074398,
+    "tolerant_iou": 0.4106291706387035,
+    "n_gt_components": 3,
+    "n_pred_components": 1,
+    "name": "CFD_092"
+  },
+  {
+    "categories": [
+      "boundary_error"
+    ],
+    "iou": 0.3589909443725744,
+    "dice": 0.5283198476915755,
+    "precision": 0.4519543973941368,
+    "recall": 0.6357388316151202,
+    "tolerant_iou": 0.6131771595900439,
+    "n_gt_components": 2,
+    "n_pred_components": 3,
+    "name": "CFD_073"
+  },
+  {
+    "categories": [
+      "boundary_error"
+    ],
+    "iou": 0.42416317991631797,
+    "dice": 0.5956665442526625,
+    "precision": 0.5126422250316056,
+    "recall": 0.7107800175284837,
+    "tolerant_iou": 0.6672273619287917,
+    "n_gt_components": 1,
+    "n_pred_components": 1,
+    "name": "CFD_028"
+  }
+]

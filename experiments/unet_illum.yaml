@@ -1,0 +1,4 @@
+# Ablation: background illumination correction + U-Net
+experiment_name: unet_illum
+preprocessing: {pipeline: illumination}
+augmentation: {enabled: false}

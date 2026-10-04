@@ -1,0 +1,269 @@
+{
+  "separability": [
+    {
+      "preset": "raw",
+      "steps": "[]",
+      "contrast": 0.09087679177522659,
+      "fisher_ratio": 1.0545895276777446,
+      "time_ms": 0.0018940501104225405
+    },
+    {
+      "preset": "normalized",
+      "steps": "['minmax']",
+      "contrast": 0.14287641107104718,
+      "fisher_ratio": 1.0541970196831971,
+      "time_ms": 3.6796636099825264
+    },
+    {
+      "preset": "contrast",
+      "steps": "['clahe']",
+      "contrast": 0.17850940864533185,
+      "fisher_ratio": 1.053556895200163,
+      "time_ms": 0.5466033599077491
+    },
+    {
+      "preset": "illumination",
+      "steps": "['background_correction']",
+      "contrast": 0.09466315527446569,
+      "fisher_ratio": 1.2178990797325968,
+      "time_ms": 29.17011087998617
+    },
+    {
+      "preset": "retinex",
+      "steps": "['retinex']",
+      "contrast": 0.10767255065497011,
+      "fisher_ratio": 1.0294489638507367,
+      "time_ms": 12.233678510092432
+    },
+    {
+      "preset": "combined",
+      "steps": "['background_correction', {'name': 'clahe', 'clip_limit': 2.0}, {'name': 'bilateral'}]",
+      "contrast": 0.17624517453834415,
+      "fisher_ratio": 1.3263515584915877,
+      "time_ms": 41.75628488006623
+    }
+  ],
+  "under_perturbation": [
+    {
+      "perturbation": "original",
+      "preset": "raw",
+      "fisher_ratio": 1.1281274700071662
+    },
+    {
+      "perturbation": "original",
+      "preset": "contrast",
+      "fisher_ratio": 1.1068715427536517
+    },
+    {
+      "perturbation": "original",
+      "preset": "illumination",
+      "fisher_ratio": 1.234426889847964
+    },
+    {
+      "perturbation": "original",
+      "preset": "combined",
+      "fisher_ratio": 1.370466930605471
+    },
+    {
+      "perturbation": "bright+60",
+      "preset": "raw",
+      "fisher_ratio": 1.1291748597985134
+    },
+    {
+      "perturbation": "bright+60",
+      "preset": "contrast",
+      "fisher_ratio": 1.247829917119816
+    },
+    {
+      "perturbation": "bright+60",
+      "preset": "illumination",
+      "fisher_ratio": 1.2284047761932015
+    },
+    {
+      "perturbation": "bright+60",
+      "preset": "combined",
+      "fisher_ratio": 1.528916297480464
+    },
+    {
+      "perturbation": "dark-60",
+      "preset": "raw",
+      "fisher_ratio": 1.1375432361615823
+    },
+    {
+      "perturbation": "dark-60",
+      "preset": "contrast",
+      "fisher_ratio": 0.9664217654615641
+    },
+    {
+      "perturbation": "dark-60",
+      "preset": "illumination",
+      "fisher_ratio": 1.2476358398795129
+    },
+    {
+      "perturbation": "dark-60",
+      "preset": "combined",
+      "fisher_ratio": 1.2000952180474997
+    },
+    {
+      "perturbation": "low_contrast",
+      "preset": "raw",
+      "fisher_ratio": 1.1292891915421932
+    },
+    {
+      "perturbation": "low_contrast",
+      "preset": "contrast",
+      "fisher_ratio": 0.9860139120370149
+    },
+    {
+      "perturbation": "low_contrast",
+      "preset": "illumination",
+      "fisher_ratio": 1.2210210429504513
+    },
+    {
+      "perturbation": "low_contrast",
+      "preset": "combined",
+      "fisher_ratio": 1.4262860547751188
+    },
+    {
+      "perturbation": "high_contrast",
+      "preset": "raw",
+      "fisher_ratio": 1.1287668667035178
+    },
+    {
+      "perturbation": "high_contrast",
+      "preset": "contrast",
+      "fisher_ratio": 1.1437719858717172
+    },
+    {
+      "perturbation": "high_contrast",
+      "preset": "illumination",
+      "fisher_ratio": 1.2391386764124035
+    },
+    {
+      "perturbation": "high_contrast",
+      "preset": "combined",
+      "fisher_ratio": 1.307517110556364
+    },
+    {
+      "perturbation": "gamma_0.5",
+      "preset": "raw",
+      "fisher_ratio": 1.098759785713628
+    },
+    {
+      "perturbation": "gamma_0.5",
+      "preset": "contrast",
+      "fisher_ratio": 1.2089677851312444
+    },
+    {
+      "perturbation": "gamma_0.5",
+      "preset": "illumination",
+      "fisher_ratio": 1.1883281518705189
+    },
+    {
+      "perturbation": "gamma_0.5",
+      "preset": "combined",
+      "fisher_ratio": 1.5719887234496128
+    },
+    {
+      "perturbation": "gamma_2.2",
+      "preset": "raw",
+      "fisher_ratio": 1.1253217821242287
+    },
+    {
+      "perturbation": "gamma_2.2",
+      "preset": "contrast",
+      "fisher_ratio": 0.8969483083114028
+    },
+    {
+      "perturbation": "gamma_2.2",
+      "preset": "illumination",
+      "fisher_ratio": 1.2535410115495325
+    },
+    {
+      "perturbation": "gamma_2.2",
+      "preset": "combined",
+      "fisher_ratio": 1.1522771425545215
+    },
+    {
+      "perturbation": "shadow",
+      "preset": "raw",
+      "fisher_ratio": 0.21743277215282433
+    },
+    {
+      "perturbation": "shadow",
+      "preset": "contrast",
+      "fisher_ratio": 0.4841913350392133
+    },
+    {
+      "perturbation": "shadow",
+      "preset": "illumination",
+      "fisher_ratio": 1.102873844280839
+    },
+    {
+      "perturbation": "shadow",
+      "preset": "combined",
+      "fisher_ratio": 1.195091026648879
+    },
+    {
+      "perturbation": "local_illumination",
+      "preset": "raw",
+      "fisher_ratio": 0.2482664665305526
+    },
+    {
+      "perturbation": "local_illumination",
+      "preset": "contrast",
+      "fisher_ratio": 0.5979722401592881
+    },
+    {
+      "perturbation": "local_illumination",
+      "preset": "illumination",
+      "fisher_ratio": 1.2113856632262467
+    },
+    {
+      "perturbation": "local_illumination",
+      "preset": "combined",
+      "fisher_ratio": 1.2994230203330517
+    },
+    {
+      "perturbation": "color_shift",
+      "preset": "raw",
+      "fisher_ratio": 1.1293288616929202
+    },
+    {
+      "perturbation": "color_shift",
+      "preset": "contrast",
+      "fisher_ratio": 1.1040502077899874
+    },
+    {
+      "perturbation": "color_shift",
+      "preset": "illumination",
+      "fisher_ratio": 1.2377989140339196
+    },
+    {
+      "perturbation": "color_shift",
+      "preset": "combined",
+      "fisher_ratio": 1.3680384695529937
+    },
+    {
+      "perturbation": "low_light_noise",
+      "preset": "raw",
+      "fisher_ratio": 0.49888718500733376
+    },
+    {
+      "perturbation": "low_light_noise",
+      "preset": "contrast",
+      "fisher_ratio": 0.3768066446005832
+    },
+    {
+      "perturbation": "low_light_noise",
+      "preset": "illumination",
+      "fisher_ratio": 0.5221288645640015
+    },
+    {
+      "perturbation": "low_light_noise",
+      "preset": "combined",
+      "fisher_ratio": 0.6920956108719111
+    }
+  ],
+  "n_images": 100
+}

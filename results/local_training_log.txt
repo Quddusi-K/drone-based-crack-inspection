@@ -1,0 +1,458 @@
+Experiment unet_raw -> /home/quddussi/Personal/drone-based-crack-inspection/results/001_unet_raw
+train/val/test = 159/20/20 | preprocessing=raw | augmentation=off | loss={'name': 'bce_dice'}
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+Model: unet (1.94 M params)
+epoch   1 | train 1.5649 | val 1.5643 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 3.0e-04 | 39s  *
+epoch   2 | train 1.4846 | val 1.4369 | dice 0.3500 | iou 0.3500 | pooled dice 0.0000 | P 0.350 R 0.350 | lr 3.0e-04 | 34s
+epoch   3 | train 1.4292 | val 1.3779 | dice 0.2125 | iou 0.1893 | pooled dice 0.1441 | P 0.393 R 0.213 | lr 3.0e-04 | 38s  *
+epoch   4 | train 1.3945 | val 1.3781 | dice 0.2468 | iou 0.1920 | pooled dice 0.3270 | P 0.294 R 0.307 | lr 3.0e-04 | 39s  *
+epoch   5 | train 1.3717 | val 1.3555 | dice 0.3122 | iou 0.2530 | pooled dice 0.3664 | P 0.312 R 0.352 | lr 3.0e-04 | 32s  *
+epoch   6 | train 1.3518 | val 1.3358 | dice 0.4189 | iou 0.3592 | pooled dice 0.3756 | P 0.465 R 0.430 | lr 3.0e-04 | 40s  *
+epoch   7 | train 1.3342 | val 1.3274 | dice 0.3532 | iou 0.2860 | pooled dice 0.4360 | P 0.396 R 0.384 | lr 3.0e-04 | 39s  *
+epoch   8 | train 1.3217 | val 1.3085 | dice 0.3771 | iou 0.3066 | pooled dice 0.4032 | P 0.393 R 0.438 | lr 3.0e-04 | 37s
+epoch   9 | train 1.3073 | val 1.2990 | dice 0.3885 | iou 0.3118 | pooled dice 0.4990 | P 0.376 R 0.471 | lr 3.0e-04 | 36s  *
+epoch  10 | train 1.2936 | val 1.2886 | dice 0.3654 | iou 0.2957 | pooled dice 0.4297 | P 0.364 R 0.436 | lr 3.0e-04 | 31s
+epoch  11 | train 1.2802 | val 1.2625 | dice 0.5316 | iou 0.4609 | pooled dice 0.5028 | P 0.568 R 0.570 | lr 3.0e-04 | 31s  *
+epoch  12 | train 1.2659 | val 1.2542 | dice 0.4173 | iou 0.3395 | pooled dice 0.5412 | P 0.416 R 0.468 | lr 3.0e-04 | 34s  *
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+# Evaluation: unet_raw (test, n=20)
+
+best threshold (val-free, by test Dice sweep shown for analysis): 0.8; inference 58.9 ms/image on cpu
+
+| setting | iou | dice | precision | recall | f1 | accuracy | specificity | pos_iou | pos_dice | global_iou | global_dice |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| t0.5 / raw | 0.4367 | 0.5177 | 0.4712 | 0.6015 | 0.5177 | 0.9931 | 0.9946 | 0.4303 | 0.5776 | 0.4572 | 0.6275 |
+| t0.5 / refined | 0.5860 | 0.6670 | 0.6190 | 0.7540 | 0.6670 | 0.9931 | 0.9946 | 0.4292 | 0.5764 | 0.4587 | 0.6289 |
+| t0.8 / raw | 0.6151 | 0.6982 | 0.7613 | 0.6601 | 0.6982 | 0.9950 | 0.9986 | 0.3910 | 0.5422 | 0.4309 | 0.6023 |
+| t0.8 / refined | 0.6098 | 0.6922 | 0.7544 | 0.6551 | 0.6922 | 0.9950 | 0.9985 | 0.3815 | 0.5312 | 0.4245 | 0.5960 |
+
+## Error analysis counts
+
+| category | count |
+|---|---|
+| false_positive | 1 |
+| false_negative | 1 |
+| boundary_error | 3 |
+| fragmentation | 1 |
+| merging | 3 |
+| good | 13 |
+
+## Crack measurement errors (pred mask vs GT mask, pixels)
+
+| metric | value |
+|---|---|
+| crack_length_pixels_mae | 143.3466 |
+| crack_length_pixels_rmse | 178.0260 |
+| mean_width_pixels_mae | 0.7470 |
+| mean_width_pixels_rmse | 0.9124 |
+| max_width_pixels_mae | 1.6347 |
+| max_width_pixels_rmse | 2.2119 |
+| crack_area_pixels_mae | 273.0909 |
+| crack_area_pixels_rmse | 351.2971 |
+| crack_area_relative_error | 0.3585 |
+| orientation_mean_abs_angular_error | 3.7151 |
+| n_images | 11 |
+
+Experiment unet_clahe -> /home/quddussi/Personal/drone-based-crack-inspection/results/002_unet_clahe
+train/val/test = 159/20/20 | preprocessing=contrast | augmentation=off | loss={'name': 'bce_dice'}
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+Model: unet (1.94 M params)
+epoch   1 | train 1.5684 | val 1.5797 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 3.0e-04 | 34s  *
+epoch   2 | train 1.4924 | val 1.4692 | dice 0.2363 | iou 0.2217 | pooled dice 0.0908 | P 0.306 R 0.224 | lr 3.0e-04 | 38s  *
+epoch   3 | train 1.4339 | val 1.4292 | dice 0.2841 | iou 0.2338 | pooled dice 0.3020 | P 0.365 R 0.305 | lr 3.0e-04 | 32s  *
+epoch   4 | train 1.3967 | val 1.3946 | dice 0.3161 | iou 0.2562 | pooled dice 0.3547 | P 0.337 R 0.361 | lr 3.0e-04 | 37s  *
+epoch   5 | train 1.3746 | val 1.3716 | dice 0.3330 | iou 0.2691 | pooled dice 0.4023 | P 0.362 R 0.389 | lr 3.0e-04 | 36s  *
+epoch   6 | train 1.3540 | val 1.3421 | dice 0.4110 | iou 0.3444 | pooled dice 0.4575 | P 0.461 R 0.426 | lr 3.0e-04 | 32s  *
+epoch   7 | train 1.3362 | val 1.3201 | dice 0.5320 | iou 0.4579 | pooled dice 0.4914 | P 0.552 R 0.573 | lr 3.0e-04 | 31s  *
+epoch   8 | train 1.3226 | val 1.3068 | dice 0.4785 | iou 0.4072 | pooled dice 0.4947 | P 0.497 R 0.528 | lr 3.0e-04 | 35s  *
+epoch   9 | train 1.3069 | val 1.2925 | dice 0.3814 | iou 0.3090 | pooled dice 0.5039 | P 0.352 R 0.458 | lr 3.0e-04 | 36s  *
+epoch  10 | train 1.2947 | val 1.2826 | dice 0.4008 | iou 0.3194 | pooled dice 0.5009 | P 0.376 R 0.497 | lr 3.0e-04 | 31s
+epoch  11 | train 1.2798 | val 1.2640 | dice 0.6085 | iou 0.5333 | pooled dice 0.5402 | P 0.626 R 0.651 | lr 3.0e-04 | 38s  *
+epoch  12 | train 1.2655 | val 1.2464 | dice 0.5890 | iou 0.5066 | pooled dice 0.5741 | P 0.575 R 0.642 | lr 3.0e-04 | 33s  *
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+# Evaluation: unet_clahe (test, n=20)
+
+best threshold (val-free, by test Dice sweep shown for analysis): 0.7; inference 63.5 ms/image on cpu
+
+| setting | iou | dice | precision | recall | f1 | accuracy | specificity | pos_iou | pos_dice | global_iou | global_dice |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| t0.5 / raw | 0.3909 | 0.4721 | 0.4245 | 0.5589 | 0.4721 | 0.9937 | 0.9950 | 0.4379 | 0.5856 | 0.4797 | 0.6484 |
+| t0.5 / refined | 0.5875 | 0.6689 | 0.6210 | 0.7575 | 0.6689 | 0.9936 | 0.9950 | 0.4319 | 0.5799 | 0.4752 | 0.6443 |
+| t0.7 / raw | 0.6957 | 0.7770 | 0.7869 | 0.7818 | 0.7770 | 0.9952 | 0.9977 | 0.4468 | 0.5946 | 0.4973 | 0.6642 |
+| t0.7 / refined | 0.6943 | 0.7754 | 0.7845 | 0.7812 | 0.7754 | 0.9952 | 0.9977 | 0.4441 | 0.5916 | 0.4942 | 0.6615 |
+
+## Error analysis counts
+
+| category | count |
+|---|---|
+| false_positive | 0 |
+| false_negative | 1 |
+| boundary_error | 2 |
+| fragmentation | 0 |
+| merging | 2 |
+| good | 16 |
+
+## Crack measurement errors (pred mask vs GT mask, pixels)
+
+| metric | value |
+|---|---|
+| crack_length_pixels_mae | 110.4997 |
+| crack_length_pixels_rmse | 147.1237 |
+| mean_width_pixels_mae | 1.0700 |
+| mean_width_pixels_rmse | 1.2073 |
+| max_width_pixels_mae | 1.1614 |
+| max_width_pixels_rmse | 1.5040 |
+| crack_area_pixels_mae | 200.6364 |
+| crack_area_pixels_rmse | 272.5080 |
+| crack_area_relative_error | 0.3238 |
+| orientation_mean_abs_angular_error | 2.0533 |
+| n_images | 11 |
+
+Experiment unet_illum -> /home/quddussi/Personal/drone-based-crack-inspection/results/003_unet_illum
+train/val/test = 159/20/20 | preprocessing=illumination | augmentation=off | loss={'name': 'bce_dice'}
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+Model: unet (1.94 M params)
+epoch   1 | train 1.5676 | val 1.5656 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 3.0e-04 | 33s  *
+epoch   2 | train 1.4904 | val 1.4420 | dice 0.3500 | iou 0.3500 | pooled dice 0.0000 | P 0.350 R 0.350 | lr 3.0e-04 | 32s
+epoch   3 | train 1.4352 | val 1.3812 | dice 0.1189 | iou 0.1105 | pooled dice 0.0516 | P 0.194 R 0.111 | lr 3.0e-04 | 32s  *
+epoch   4 | train 1.4018 | val 1.3734 | dice 0.1589 | iou 0.1023 | pooled dice 0.3516 | P 0.216 R 0.173 | lr 3.0e-04 | 32s  *
+epoch   5 | train 1.3788 | val 1.3515 | dice 0.2595 | iou 0.2173 | pooled dice 0.2568 | P 0.453 R 0.240 | lr 3.0e-04 | 33s
+epoch   6 | train 1.3551 | val 1.3389 | dice 0.3844 | iou 0.3354 | pooled dice 0.3045 | P 0.466 R 0.367 | lr 3.0e-04 | 33s
+epoch   7 | train 1.3358 | val 1.3326 | dice 0.4123 | iou 0.3451 | pooled dice 0.4503 | P 0.455 R 0.460 | lr 3.0e-04 | 32s  *
+epoch   8 | train 1.3226 | val 1.3146 | dice 0.3813 | iou 0.3075 | pooled dice 0.4604 | P 0.385 R 0.450 | lr 3.0e-04 | 32s  *
+epoch   9 | train 1.3082 | val 1.3124 | dice 0.3766 | iou 0.3033 | pooled dice 0.4569 | P 0.370 R 0.477 | lr 3.0e-04 | 33s
+epoch  10 | train 1.2939 | val 1.2849 | dice 0.4928 | iou 0.4196 | pooled dice 0.4809 | P 0.510 R 0.547 | lr 3.0e-04 | 34s  *
+epoch  11 | train 1.2799 | val 1.2614 | dice 0.5464 | iou 0.4722 | pooled dice 0.5242 | P 0.568 R 0.594 | lr 3.0e-04 | 37s  *
+epoch  12 | train 1.2657 | val 1.2569 | dice 0.5177 | iou 0.4395 | pooled dice 0.5459 | P 0.522 R 0.561 | lr 3.0e-04 | 34s  *
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+# Evaluation: unet_illum (test, n=20)
+
+threshold 0.5 (selected on the validation split by pixel-pooled Dice); inference 55.4 ms/image on cpu
+
+| setting | iou | dice | precision | recall | f1 | accuracy | specificity | pos_iou | pos_dice | global_iou | global_dice |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| t0.5 / raw | 0.5437 | 0.6247 | 0.5815 | 0.7026 | 0.6247 | 0.9937 | 0.9951 | 0.4431 | 0.5903 | 0.4766 | 0.6456 |
+| t0.5 / refined | 0.6410 | 0.7218 | 0.6777 | 0.8022 | 0.7218 | 0.9936 | 0.9951 | 0.4381 | 0.5851 | 0.4742 | 0.6433 |
+
+## Error analysis counts
+
+| category | count |
+|---|---|
+| false_positive | 1 |
+| false_negative | 1 |
+| boundary_error | 5 |
+| fragmentation | 0 |
+| merging | 2 |
+| good | 12 |
+
+## Crack measurement errors (pred mask vs GT mask, pixels)
+
+| metric | value |
+|---|---|
+| crack_length_pixels_mae | 82.4001 |
+| crack_length_pixels_rmse | 109.6080 |
+| mean_width_pixels_mae | 2.0444 |
+| mean_width_pixels_rmse | 2.1106 |
+| max_width_pixels_mae | 1.9983 |
+| max_width_pixels_rmse | 2.1116 |
+| crack_area_pixels_mae | 365.1818 |
+| crack_area_pixels_rmse | 468.4647 |
+| crack_area_relative_error | 0.5949 |
+| orientation_mean_abs_angular_error | 1.5669 |
+| n_images | 11 |
+
+Experiment unet_aug -> /home/quddussi/Personal/drone-based-crack-inspection/results/004_unet_aug
+train/val/test = 159/20/20 | preprocessing=raw | augmentation=on | loss={'name': 'bce_dice'}
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+Model: unet (1.94 M params)
+epoch   1 | train 1.5694 | val 1.5415 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 3.0e-04 | 31s  *
+epoch   2 | train 1.4959 | val 1.4493 | dice 0.0602 | iou 0.0552 | pooled dice 0.0174 | P 0.064 R 0.058 | lr 3.0e-04 | 32s  *
+epoch   3 | train 1.4403 | val 1.4102 | dice 0.1081 | iou 0.1041 | pooled dice 0.0167 | P 0.110 R 0.107 | lr 3.0e-04 | 31s
+epoch   4 | train 1.4089 | val 1.3890 | dice 0.3002 | iou 0.3001 | pooled dice 0.0004 | P 0.333 R 0.300 | lr 3.0e-04 | 31s
+epoch   5 | train 1.3806 | val 1.3507 | dice 0.4518 | iou 0.4509 | pooled dice 0.0047 | P 0.512 R 0.451 | lr 3.0e-04 | 32s
+epoch   6 | train 1.3674 | val 1.3479 | dice 0.1152 | iou 0.1081 | pooled dice 0.0326 | P 0.201 R 0.109 | lr 3.0e-04 | 32s  *
+epoch   7 | train 1.3465 | val 1.3314 | dice 0.2696 | iou 0.2608 | pooled dice 0.0527 | P 0.344 R 0.263 | lr 3.0e-04 | 32s  *
+epoch   8 | train 1.3338 | val 1.3116 | dice 0.4775 | iou 0.4659 | pooled dice 0.0807 | P 0.594 R 0.467 | lr 3.0e-04 | 32s  *
+epoch   9 | train 1.3195 | val 1.3072 | dice 0.3213 | iou 0.2932 | pooled dice 0.1812 | P 0.461 R 0.302 | lr 3.0e-04 | 31s  *
+epoch  10 | train 1.3053 | val 1.2907 | dice 0.2850 | iou 0.2522 | pooled dice 0.2036 | P 0.440 R 0.262 | lr 3.0e-04 | 31s  *
+epoch  11 | train 1.2928 | val 1.2707 | dice 0.2134 | iou 0.1880 | pooled dice 0.1468 | P 0.355 R 0.195 | lr 3.0e-04 | 31s
+epoch  12 | train 1.2835 | val 1.2719 | dice 0.2617 | iou 0.2042 | pooled dice 0.3576 | P 0.341 R 0.245 | lr 3.0e-04 | 31s  *
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+# Evaluation: unet_aug (test, n=20)
+
+threshold 0.5 (selected on the validation split by pixel-pooled Dice); inference 74.1 ms/image on cpu
+
+| setting | iou | dice | precision | recall | f1 | accuracy | specificity | pos_iou | pos_dice | global_iou | global_dice |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| t0.5 / raw | 0.2345 | 0.2901 | 0.3980 | 0.3212 | 0.2901 | 0.9925 | 0.9965 | 0.2445 | 0.3456 | 0.2968 | 0.4577 |
+| t0.5 / refined | 0.5326 | 0.5872 | 0.5715 | 0.6189 | 0.5872 | 0.9926 | 0.9967 | 0.2411 | 0.3403 | 0.2996 | 0.4611 |
+
+## Error analysis counts
+
+| category | count |
+|---|---|
+| false_positive | 1 |
+| false_negative | 5 |
+| boundary_error | 4 |
+| fragmentation | 1 |
+| merging | 1 |
+| good | 10 |
+
+## Crack measurement errors (pred mask vs GT mask, pixels)
+
+| metric | value |
+|---|---|
+| crack_length_pixels_mae | 208.1877 |
+| crack_length_pixels_rmse | 270.7623 |
+| mean_width_pixels_mae | 2.5853 |
+| mean_width_pixels_rmse | 2.6351 |
+| max_width_pixels_mae | 3.6699 |
+| max_width_pixels_rmse | 4.3816 |
+| crack_area_pixels_mae | 532.6364 |
+| crack_area_pixels_rmse | 661.7842 |
+| crack_area_relative_error | 7.4421 |
+| orientation_mean_abs_angular_error | 13.0957 |
+| n_images | 11 |
+
+Experiment unet_clahe_aug -> /home/quddussi/Personal/drone-based-crack-inspection/results/005_unet_clahe_aug
+train/val/test = 159/20/20 | preprocessing=contrast | augmentation=on | loss={'name': 'bce_dice'}
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+Model: unet (1.94 M params)
+epoch   1 | train 1.5716 | val 1.5508 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 3.0e-04 | 31s  *
+epoch   2 | train 1.4949 | val 1.4366 | dice 0.3502 | iou 0.3501 | pooled dice 0.0005 | P 0.417 R 0.350 | lr 3.0e-04 | 32s  *
+epoch   3 | train 1.4347 | val 1.4090 | dice 0.1900 | iou 0.1732 | pooled dice 0.0952 | P 0.274 R 0.179 | lr 3.0e-04 | 32s  *
+epoch   4 | train 1.4047 | val 1.3991 | dice 0.2567 | iou 0.2323 | pooled dice 0.1303 | P 0.313 R 0.246 | lr 3.0e-04 | 31s  *
+epoch   5 | train 1.3834 | val 1.3517 | dice 0.4242 | iou 0.4138 | pooled dice 0.0700 | P 0.497 R 0.416 | lr 3.0e-04 | 31s
+epoch   6 | train 1.3633 | val 1.3493 | dice 0.3932 | iou 0.3745 | pooled dice 0.1113 | P 0.472 R 0.382 | lr 3.0e-04 | 31s
+epoch   7 | train 1.3470 | val 1.3458 | dice 0.2740 | iou 0.2257 | pooled dice 0.2752 | P 0.305 R 0.294 | lr 3.0e-04 | 31s  *
+epoch   8 | train 1.3330 | val 1.3222 | dice 0.5511 | iou 0.5104 | pooled dice 0.2343 | P 0.650 R 0.548 | lr 3.0e-04 | 31s
+epoch   9 | train 1.3185 | val 1.3160 | dice 0.2649 | iou 0.2052 | pooled dice 0.3202 | P 0.287 R 0.309 | lr 3.0e-04 | 31s  *
+epoch  10 | train 1.3050 | val 1.2937 | dice 0.5508 | iou 0.4948 | pooled dice 0.3319 | P 0.623 R 0.546 | lr 3.0e-04 | 31s  *
+epoch  11 | train 1.2905 | val 1.2764 | dice 0.5700 | iou 0.5230 | pooled dice 0.2725 | P 0.640 R 0.559 | lr 3.0e-04 | 31s
+epoch  12 | train 1.2789 | val 1.2690 | dice 0.4855 | iou 0.4194 | pooled dice 0.4037 | P 0.494 R 0.512 | lr 3.0e-04 | 33s  *
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+# Evaluation: unet_clahe_aug (test, n=20)
+
+threshold 0.5 (selected on the validation split by pixel-pooled Dice); inference 61.0 ms/image on cpu
+
+| setting | iou | dice | precision | recall | f1 | accuracy | specificity | pos_iou | pos_dice | global_iou | global_dice |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| t0.5 / raw | 0.5342 | 0.6161 | 0.5683 | 0.7031 | 0.6161 | 0.9913 | 0.9934 | 0.3349 | 0.4839 | 0.3714 | 0.5416 |
+| t0.5 / refined | 0.6329 | 0.7146 | 0.6663 | 0.8032 | 0.7146 | 0.9913 | 0.9933 | 0.3325 | 0.4811 | 0.3709 | 0.5411 |
+
+## Error analysis counts
+
+| category | count |
+|---|---|
+| false_positive | 0 |
+| false_negative | 1 |
+| boundary_error | 5 |
+| fragmentation | 0 |
+| merging | 4 |
+| good | 11 |
+
+## Crack measurement errors (pred mask vs GT mask, pixels)
+
+| metric | value |
+|---|---|
+| crack_length_pixels_mae | 111.4014 |
+| crack_length_pixels_rmse | 135.7040 |
+| mean_width_pixels_mae | 3.2730 |
+| mean_width_pixels_rmse | 3.3864 |
+| max_width_pixels_mae | 3.5631 |
+| max_width_pixels_rmse | 4.0632 |
+| crack_area_pixels_mae | 525.1818 |
+| crack_area_pixels_rmse | 587.7151 |
+| crack_area_relative_error | 0.7474 |
+| orientation_mean_abs_angular_error | 2.6267 |
+| n_images | 11 |
+
+Experiment unet_clahe_aug_tversky -> /home/quddussi/Personal/drone-based-crack-inspection/results/006_unet_clahe_aug_tversky
+train/val/test = 159/20/20 | preprocessing=contrast | augmentation=on | loss={'name': 'tversky', 'alpha': 0.3, 'beta': 0.7}
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+Model: unet (1.94 M params)
+epoch   1 | train 0.9655 | val 0.9682 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 3.0e-04 | 31s  *
+epoch   2 | train 0.9497 | val 0.9158 | dice 0.2197 | iou 0.1449 | pooled dice 0.1672 | P 0.194 R 0.324 | lr 3.0e-04 | 31s  *
+epoch   3 | train 0.9399 | val 0.8423 | dice 0.1735 | iou 0.1055 | pooled dice 0.0659 | P 0.113 R 0.406 | lr 3.0e-04 | 32s
+epoch   4 | train 0.9334 | val 0.8753 | dice 0.1430 | iou 0.0874 | pooled dice 0.0479 | P 0.095 R 0.413 | lr 3.0e-04 | 31s
+epoch   5 | train 0.9315 | val 0.8963 | dice 0.1183 | iou 0.0700 | pooled dice 0.0354 | P 0.071 R 0.467 | lr 3.0e-04 | 31s
+epoch   6 | train 0.9176 | val 0.9023 | dice 0.0850 | iou 0.0497 | pooled dice 0.0454 | P 0.050 R 0.485 | lr 1.5e-04 | 31s
+epoch   7 | train 0.9108 | val 0.8426 | dice 0.1805 | iou 0.1145 | pooled dice 0.0535 | P 0.120 R 0.447 | lr 1.5e-04 | 33s
+epoch   8 | train 0.9096 | val 0.8451 | dice 0.1780 | iou 0.1137 | pooled dice 0.0581 | P 0.119 R 0.451 | lr 1.5e-04 | 32s
+Early stopping at epoch 8 (best global_dice=0.1672 @ epoch 2)
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+# Evaluation: unet_clahe_aug_tversky (test, n=20)
+
+threshold 0.8 (selected on the validation split by pixel-pooled Dice); inference 61.4 ms/image on cpu
+
+| setting | iou | dice | precision | recall | f1 | accuracy | specificity | pos_iou | pos_dice | global_iou | global_dice |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| t0.5 / raw | 0.1883 | 0.2693 | 0.2057 | 0.4229 | 0.2693 | 0.9569 | 0.9579 | 0.3424 | 0.4896 | 0.1242 | 0.2210 |
+| t0.5 / refined | 0.2376 | 0.3186 | 0.2552 | 0.4722 | 0.3186 | 0.9558 | 0.9568 | 0.3412 | 0.4883 | 0.1210 | 0.2159 |
+| t0.8 / raw | 0.2876 | 0.3672 | 0.4071 | 0.3547 | 0.3672 | 0.9873 | 0.9908 | 0.3411 | 0.4858 | 0.2251 | 0.3674 |
+| t0.8 / refined | 0.3318 | 0.4091 | 0.4531 | 0.3961 | 0.4091 | 0.9876 | 0.9912 | 0.3305 | 0.4710 | 0.2251 | 0.3675 |
+
+## Error analysis counts
+
+| category | count |
+|---|---|
+| false_positive | 6 |
+| false_negative | 2 |
+| boundary_error | 2 |
+| fragmentation | 2 |
+| merging | 1 |
+| good | 8 |
+
+## Crack measurement errors (pred mask vs GT mask, pixels)
+
+| metric | value |
+|---|---|
+| crack_length_pixels_mae | 162.8421 |
+| crack_length_pixels_rmse | 201.7047 |
+| mean_width_pixels_mae | 1.0810 |
+| mean_width_pixels_rmse | 1.2616 |
+| max_width_pixels_mae | 1.7438 |
+| max_width_pixels_rmse | 2.0737 |
+| crack_area_pixels_mae | 322.8182 |
+| crack_area_pixels_rmse | 388.4731 |
+| crack_area_relative_error | 0.4463 |
+| orientation_mean_abs_angular_error | 6.1708 |
+| n_images | 11 |
+
+Experiment unet_clahe_aug_focal -> /home/quddussi/Personal/drone-based-crack-inspection/results/007_unet_clahe_aug_focal
+train/val/test = 159/20/20 | preprocessing=contrast | augmentation=on | loss={'name': 'focal', 'alpha': 0.75, 'gamma': 2.0}
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+Model: unet (1.94 M params)
+epoch   1 | train 0.0320 | val 0.0294 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 3.0e-04 | 31s  *
+epoch   2 | train 0.0234 | val 0.0214 | dice 0.3502 | iou 0.3501 | pooled dice 0.0004 | P 0.372 R 0.350 | lr 3.0e-04 | 34s  *
+epoch   3 | train 0.0181 | val 0.0177 | dice 0.4003 | iou 0.4002 | pooled dice 0.0005 | P 0.430 R 0.400 | lr 3.0e-04 | 40s  *
+epoch   4 | train 0.0155 | val 0.0158 | dice 0.4000 | iou 0.4000 | pooled dice 0.0000 | P 0.400 R 0.400 | lr 3.0e-04 | 38s
+epoch   5 | train 0.0142 | val 0.0138 | dice 0.3155 | iou 0.3084 | pooled dice 0.0255 | P 0.388 R 0.309 | lr 3.0e-04 | 46s  *
+epoch   6 | train 0.0132 | val 0.0129 | dice 0.2657 | iou 0.2583 | pooled dice 0.0303 | P 0.456 R 0.258 | lr 3.0e-04 | 44s  *
+epoch   7 | train 0.0121 | val 0.0122 | dice 0.2396 | iou 0.2218 | pooled dice 0.0794 | P 0.480 R 0.222 | lr 3.0e-04 | 33s  *
+epoch   8 | train 0.0115 | val 0.0114 | dice 0.2667 | iou 0.2587 | pooled dice 0.0300 | P 0.455 R 0.259 | lr 3.0e-04 | 34s
+epoch   9 | train 0.0109 | val 0.0109 | dice 0.2843 | iou 0.2510 | pooled dice 0.1683 | P 0.480 R 0.256 | lr 3.0e-04 | 37s  *
+epoch  10 | train 0.0103 | val 0.0102 | dice 0.2423 | iou 0.2070 | pooled dice 0.1920 | P 0.411 R 0.213 | lr 3.0e-04 | 46s  *
+epoch  11 | train 0.0098 | val 0.0094 | dice 0.2538 | iou 0.2126 | pooled dice 0.2129 | P 0.437 R 0.221 | lr 3.0e-04 | 36s  *
+epoch  12 | train 0.0095 | val 0.0094 | dice 0.3018 | iou 0.2471 | pooled dice 0.3043 | P 0.421 R 0.270 | lr 3.0e-04 | 39s  *
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+# Evaluation: unet_clahe_aug_focal (test, n=20)
+
+threshold 0.5 (selected on the validation split by pixel-pooled Dice); inference 57.3 ms/image on cpu
+
+| setting | iou | dice | precision | recall | f1 | accuracy | specificity | pos_iou | pos_dice | global_iou | global_dice |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| t0.5 / raw | 0.3413 | 0.4173 | 0.5114 | 0.3721 | 0.4173 | 0.9936 | 0.9984 | 0.2569 | 0.3951 | 0.2836 | 0.4419 |
+| t0.5 / refined | 0.5930 | 0.6649 | 0.7662 | 0.6248 | 0.6649 | 0.9939 | 0.9986 | 0.2599 | 0.3907 | 0.2980 | 0.4592 |
+
+## Error analysis counts
+
+| category | count |
+|---|---|
+| false_positive | 0 |
+| false_negative | 4 |
+| boundary_error | 4 |
+| fragmentation | 4 |
+| merging | 1 |
+| good | 10 |
+
+## Crack measurement errors (pred mask vs GT mask, pixels)
+
+| metric | value |
+|---|---|
+| crack_length_pixels_mae | 187.8432 |
+| crack_length_pixels_rmse | 223.1490 |
+| mean_width_pixels_mae | 0.5086 |
+| mean_width_pixels_rmse | 0.7473 |
+| max_width_pixels_mae | 1.4159 |
+| max_width_pixels_rmse | 1.7156 |
+| crack_area_pixels_mae | 400.2727 |
+| crack_area_pixels_rmse | 502.2070 |
+| crack_area_relative_error | 0.4901 |
+| orientation_mean_abs_angular_error | 3.2676 |
+| n_images | 11 |
+
+Experiment unet_clahe_aug_bce -> /home/quddussi/Personal/drone-based-crack-inspection/results/008_unet_clahe_aug_bce
+train/val/test = 159/20/20 | preprocessing=contrast | augmentation=on | loss={'name': 'bce'}
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+Model: unet (1.94 M params)
+epoch   1 | train 0.5878 | val 0.5731 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 3.0e-04 | 32s  *
+epoch   2 | train 0.5098 | val 0.4815 | dice 0.1505 | iou 0.1503 | pooled dice 0.0016 | P 0.159 R 0.150 | lr 3.0e-04 | 31s  *
+epoch   3 | train 0.4518 | val 0.4261 | dice 0.3500 | iou 0.3500 | pooled dice 0.0000 | P 0.350 R 0.350 | lr 3.0e-04 | 34s
+epoch   4 | train 0.4221 | val 0.4083 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 3.0e-04 | 38s
+epoch   5 | train 0.3968 | val 0.3867 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 3.0e-04 | 38s
+epoch   6 | train 0.3805 | val 0.3802 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 1.5e-04 | 33s
+epoch   7 | train 0.3674 | val 0.3705 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 1.5e-04 | 31s
+epoch   8 | train 0.3606 | val 0.3607 | dice 0.5000 | iou 0.5000 | pooled dice 0.0000 | P 0.500 R 0.500 | lr 1.5e-04 | 34s
+Early stopping at epoch 8 (best global_dice=0.0016 @ epoch 2)
+CUDA available : False
+GPU name       : n/a
+Device in use  : cpu
+# Evaluation: unet_clahe_aug_bce (test, n=20)
+
+threshold 0.4 (selected on the validation split by pixel-pooled Dice); inference 49.0 ms/image on cpu
+
+| setting | iou | dice | precision | recall | f1 | accuracy | specificity | pos_iou | pos_dice | global_iou | global_dice |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| t0.5 / raw | 0.2502 | 0.2503 | 0.2531 | 0.2502 | 0.2503 | 0.9925 | 0.9998 | 0.0003 | 0.0006 | 0.0002 | 0.0004 |
+| t0.5 / refined | 0.4500 | 0.4500 | 0.4500 | 0.4500 | 0.4500 | 0.9927 | 1.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+| t0.4 / raw | 0.0090 | 0.0175 | 0.0093 | 0.2275 | 0.0175 | 0.6651 | 0.6679 | 0.0163 | 0.0319 | 0.0075 | 0.0149 |
+| t0.4 / refined | 0.0076 | 0.0150 | 0.0077 | 0.4993 | 0.0150 | 0.1471 | 0.1416 | 0.0139 | 0.0274 | 0.0076 | 0.0151 |
+
+## Error analysis counts
+
+| category | count |
+|---|---|
+| false_positive | 9 |
+| false_negative | 0 |
+| boundary_error | 0 |
+| fragmentation | 3 |
+| merging | 1 |
+| good | 7 |
+
+## Crack measurement errors (pred mask vs GT mask, pixels)
+
+| metric | value |
+|---|---|
+| crack_length_pixels_mae | 2682.0174 |
+| crack_length_pixels_rmse | 3032.7431 |
+| mean_width_pixels_mae | 58.2560 |
+| mean_width_pixels_rmse | 72.2120 |
+| max_width_pixels_mae | 178.1263 |
+| max_width_pixels_rmse | 187.4250 |
+| crack_area_pixels_mae | 55644.0000 |
+| crack_area_pixels_rmse | 55954.6026 |
+| crack_area_relative_error | 2036.2935 |
+| orientation_mean_abs_angular_error | 56.8362 |
+| n_images | 11 |
+

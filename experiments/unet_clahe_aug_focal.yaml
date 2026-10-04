@@ -1,0 +1,5 @@
+# Loss ablation: focal loss
+experiment_name: unet_clahe_aug_focal
+preprocessing: {pipeline: contrast}
+augmentation: {enabled: true}
+loss: {name: focal, alpha: 0.75, gamma: 2.0}

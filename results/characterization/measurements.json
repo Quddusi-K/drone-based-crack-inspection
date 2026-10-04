@@ -1,0 +1,70 @@
+[
+  {
+    "crack_area_pixels": 2403,
+    "crack_length_pixels": 641.2985565973347,
+    "mean_width_pixels": 4.347543239593506,
+    "max_width_pixels": 8.787599563598633,
+    "orientation_degrees": 6.459085346140995,
+    "num_components": 2,
+    "crack_density": 0.011972855548469387,
+    "branch_points": 13,
+    "end_points": 17,
+    "mean_component_aspect_ratio": 5.409155104894638,
+    "image_shape": [
+      448,
+      448
+    ],
+    "name": "CFD_001"
+  },
+  {
+    "crack_area_pixels": 6827,
+    "crack_length_pixels": 1492.065150626205,
+    "mean_width_pixels": 5.118747711181641,
+    "max_width_pixels": 11.587599754333496,
+    "orientation_degrees": 23.061084141009303,
+    "num_components": 2,
+    "crack_density": 0.034015266262755105,
+    "branch_points": 26,
+    "end_points": 24,
+    "mean_component_aspect_ratio": 4.749598811473077,
+    "image_shape": [
+      448,
+      448
+    ],
+    "name": "CFD_002"
+  },
+  {
+    "crack_area_pixels": 3152,
+    "crack_length_pixels": 853.4701294725885,
+    "mean_width_pixels": 3.9530904293060303,
+    "max_width_pixels": 12.0,
+    "orientation_degrees": 156.3738183154631,
+    "num_components": 2,
+    "crack_density": 0.0157047193877551,
+    "branch_points": 3,
+    "end_points": 7,
+    "mean_component_aspect_ratio": 4.641955233876187,
+    "image_shape": [
+      448,
+      448
+    ],
+    "name": "CFD_003"
+  },
+  {
+    "crack_area_pixels": 2644,
+    "crack_length_pixels": 715.0092347159896,
+    "mean_width_pixels": 3.9325156211853027,
+    "max_width_pixels": 8.393799781799316,
+    "orientation_degrees": 178.3753542301451,
+    "num_components": 2,
+    "crack_density": 0.013173628826530613,
+    "branch_points": 4,
+    "end_points": 6,
+    "mean_component_aspect_ratio": 1.7842745858625648,
+    "image_shape": [
+      448,
+      448
+    ],
+    "name": "CFD_004"
+  }
+]

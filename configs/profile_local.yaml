@@ -1,0 +1,4 @@
+# Laptop (CPU) profile: small model, small images, short schedule, local sample dataset.
+dataset: {path: crack_samples, image_size: 256, batch_size: 8, num_workers: 2}
+model: {params: {base_channels: 16, depth: 4}}
+training: {epochs: 15, early_stopping_patience: 6, amp: false}

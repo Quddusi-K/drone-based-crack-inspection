@@ -1,0 +1,31 @@
+{
+  "total": 199,
+  "groups": {
+    "Negative": {
+      "images": 99,
+      "with_mask": 98
+    },
+    "Positive": {
+      "images": 100,
+      "with_mask": 100
+    }
+  },
+  "splits": {
+    "train": 159,
+    "val": 20,
+    "test": 20
+  },
+  "image_shapes": [
+    [
+      448,
+      448,
+      3
+    ]
+  ],
+  "crack_pixel_fraction": {
+    "mean": 0.008315202847784843,
+    "median": 0.0036023198341836736,
+    "max": 0.06314273756377552,
+    "fraction_images_with_crack": 0.5125628140703518
+  }
+}

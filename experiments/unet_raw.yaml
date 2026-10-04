@@ -1,0 +1,4 @@
+# Experiment C: raw images + U-Net (baseline)
+experiment_name: unet_raw
+preprocessing: {pipeline: raw}
+augmentation: {enabled: false}
