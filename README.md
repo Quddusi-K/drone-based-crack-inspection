@@ -23,11 +23,11 @@ flowchart LR
 ## Contents
 
 1. [Problem statement](#1-problem-statement) · 2. [Motivation](#2-motivation) · 3. [Confidentiality and proxy dataset](#3-confidentiality-limitation-and-proxy-dataset)
-4. [Dataset setup](#4-dataset-setup) · 5. [Annotation](#5-annotation-procedure) · 6. [Preprocessing](#6-preprocessing) · 7. [Photometric variation](#7-photometric-variation)
-8. [Classical CV](#8-classical-cv-methodology) · 9. [Deep learning](#9-deep-learning-methodology) · 10. [Semantic segmentation](#10-semantic-segmentation)
-11. [Morphological refinement](#11-morphological-refinement) · 12. [Crack characterisation](#12-crack-characterisation) · 13. [Metrics](#13-evaluation-metrics)
-14. [Experimental setup & results](#14-experimental-setup-and-results) · 15. [Ablations](#15-ablation-studies) · 16. [Error analysis](#16-error-analysis)
-17. [Laptop workflow](#17-local-laptop-workflow) · 18. [Kaggle workflow](#18-kaggle-gpu-workflow) · 19. [Limitations](#19-limitations) · 20. [Future work](#20-future-work)
+4. [Dataset setup](#4-dataset-setup) · 5. [Preprocessing](#5-preprocessing) · 6. [Photometric variation](#6-photometric-variation)
+7. [Classical CV](#7-classical-cv-methodology) · 8. [Deep learning](#8-deep-learning-methodology) · 9. [Semantic segmentation](#9-semantic-segmentation)
+10. [Morphological refinement](#10-morphological-refinement) · 11. [Crack characterisation](#11-crack-characterisation) · 12. [Metrics](#12-evaluation-metrics)
+13. [Experimental setup & results](#13-experimental-setup-and-results) · 14. [Ablations](#14-ablation-studies) · 15. [Error analysis](#15-error-analysis)
+16. [Laptop workflow](#16-local-laptop-workflow) · 17. [Kaggle workflow](#17-kaggle-gpu-workflow) · 18. [Limitations](#18-limitations) · 19. [Future work](#19-future-work)
 
 ---
 
@@ -102,7 +102,7 @@ Separability (Fisher ratio) under perturbation, with and without preprocessing (
 
 Shadows and spotlights destroy separability of raw images; background-illumination correction almost fully restores
 it. Noise is not fixed by any of the presets. End-to-end robustness of the detectors is measured by
-`scripts/photometric_experiment.py` (section 14).
+`scripts/photometric_experiment.py` (section 13).
 
 ## 7. Classical CV methodology
 
