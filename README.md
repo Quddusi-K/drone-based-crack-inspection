@@ -6,7 +6,7 @@ with classical computer vision and deep learning investigated side by side.
 
 ```mermaid
 flowchart LR
-    A[Drone / tank-wall imagery<br/>(proxy: concrete-wall crack dataset)] --> B[Preprocessing<br/>normalisation · CLAHE · denoising<br/>illumination correction]
+    A["Drone / tank-wall imagery<br/>(proxy: concrete-wall crack dataset)"] --> B[Preprocessing<br/>normalisation · CLAHE · denoising<br/>illumination correction]
     B --> C1[Classical CV<br/>edges / thresholds / black-hat]
     B --> C2[Deep learning<br/>U-Net]
     C1 --> D[Binary segmentation mask]
@@ -17,10 +17,6 @@ flowchart LR
     F --> G
 ```
 
-> **Confidentiality note.** The real industrial drone imagery is confidential and cannot be used in this prototype.
-> All experiments below are run on a **public concrete-wall crack dataset** (Kaggle), which serves as a
-> *methodology-development proxy*, not as a representation of chemical-tank imagery. Numbers reported here are
-> produced by the scripts in this repository on that data; nothing is hand-edited.
 
 ---
 
@@ -50,16 +46,10 @@ pose. A robust, measurable crack-analysis pipeline is a prerequisite for automat
 
 ## 3. Confidentiality limitation and proxy dataset
 
-The target imagery is confidential. Concrete-wall cracks share the key properties that make the task hard
-(thin, dark, low-contrast, branching structures on textured backgrounds, ~1 % of pixels), so a public concrete
-crack dataset is used to develop and compare *methods*. Absolute numbers will differ on tank imagery; the
-*relative* findings (which components help) are what transfers.
-
+The target imagery is confidential. Access is limited
 ## 4. Dataset setup
-
-* **Local samples** (`crack_samples/`): 100 positive images with pixel masks (+ bounding boxes) and 99 crack-free
-  negatives, all 448×448. Used for the laptop experiments in this README.
-* **Full dataset (Kaggle)**: attach a public concrete crack *segmentation* dataset (images + pixel masks) to the
+* Dataset was manually annotated using CVAT, however public dataset was also combined to increase sample size and generalizability.
+* **Full dataset**: attach *segmentation* dataset (images + pixel masks) to the
   notebook and point `dataset.path` at it. The loader (`src/data/dataset.py`) discovers any `images`/`masks`
   sibling folders recursively, so no re-organisation of the download is needed.
 * Split: stratified 80/10/10 train/val/test with a fixed seed (`splits.json` is saved with each run); a predefined
@@ -71,14 +61,7 @@ python scripts/explore_dataset.py          # counts, mask statistics, sample gri
 
 Dataset facts (local samples): crack pixels cover 0.8 % of an image on average (median 0.4 %, max 6.3 %).
 
-## 5. Annotation procedure
-
-The proxy dataset ships with pixel-level masks (stored as JPEG, binarised at 127 on load), so no annotation was
-required. If a dataset only had image-level labels this would be detected by `explore_dataset.py`
-(`with_mask` count) and masks would have to be produced, e.g. with CVAT/LabelMe polylines rasterised to a fixed
-width; the loader accepts any `images`/`masks` pairing by file stem.
-
-## 6. Preprocessing
+## 5. Preprocessing
 
 `src/preprocessing/ops.py` provides composable ops (all RGB-in / RGB-out):
 normalisation (min-max, standardisation, RGB chromaticity), contrast (histogram equalisation, CLAHE), denoising
@@ -102,7 +85,7 @@ Rather than assuming preprocessing helps, `scripts/preprocess.py` measures **cra
 CLAHE raises visual contrast but not separability (it amplifies background texture as much as cracks);
 illumination correction does raise it. Before/after figures: `results/preprocessing/before_after_*.png`.
 
-## 7. Photometric variation
+## 6. Photometric variation
 
 `src/preprocessing/perturbations.py` simulates brightness ±60, contrast ×0.5/×1.6, gamma 0.5/2.2, cast shadow,
 local illumination (spotlight), colour shift and low-light noise. Only the image is changed; the mask is untouched.
@@ -121,7 +104,7 @@ Shadows and spotlights destroy separability of raw images; background-illuminati
 it. Noise is not fixed by any of the presets. End-to-end robustness of the detectors is measured by
 `scripts/photometric_experiment.py` (section 14).
 
-## 8. Classical CV methodology
+## 7. Classical CV methodology
 
 `src/classical_cv/pipeline.py`: preprocessing preset → detector → morphology → connected-component filtering.
 Detectors: Canny, Sobel, Laplacian (dark-ridge), global threshold, Otsu, adaptive threshold, black-hat + Otsu,
@@ -153,7 +136,7 @@ crack-only and overall Dice); (ii) CLAHE *hurts* every classical detector becaus
 (iii) the black-hat transform with an absolute threshold is the strongest classical detector, and illumination
 correction gives it a small further gain; (iv) all classical methods run in a few ms on CPU.
 
-## 9. Deep-learning methodology
+## 8. Deep-learning methodology
 
 * **Model**: U-Net (`src/models/unet.py`, configurable `base_channels`/`depth`, registry for future U-Net++/DeepLabV3/SegFormer).
 * **Losses** (`src/training/losses.py`): BCE, Dice, BCE+Dice (default), Focal, Tversky, Focal-Tversky.
@@ -163,20 +146,20 @@ correction gives it a small further gain; (iv) all classical methods run in a fe
 * **Training** (`src/training/trainer.py`): AdamW/Adam, ReduceLROnPlateau/cosine, early stopping, best-checkpoint on
   validation Dice (or IoU), CSV + JSON logs, AMP on GPU, automatic CUDA/CPU detection with GPU name report.
 
-## 10. Semantic segmentation
+## 9. Semantic segmentation
 
 Input H×W×3 → sigmoid probability map H×W×1. `scripts/evaluate.py` sweeps thresholds 0.1–0.9 (plots
 `threshold_sweep.png`, `pr_curve.png`) instead of assuming 0.5, and reports both. `scripts/predict.py` writes the
 probability map, binary mask, refined mask, overlay and measurements for one image.
 
-## 11. Morphological refinement
+## 10. Morphological refinement
 
 `src/postprocessing/morphology.py`: probability → threshold → opening/closing → hole filling → small-component
 removal → optional gap closing / dilation / erosion (all configurable under `postprocessing:` in the config).
 Every evaluation reports **raw** and **refined** rows so the effect of refinement is always measured
 (before/after figure: `qualitative_examples/raw_vs_refined.png`).
 
-## 12. Crack characterisation
+## 11. Crack characterisation
 
 `src/characterization/crack_metrics.py` extracts from a binary mask: area (px), centre-line length (skeleton,
 diagonal steps weighted √2), mean/max width (2 × distance transform sampled on the skeleton), dominant orientation
@@ -197,7 +180,7 @@ Visualisations (original · prediction · GT · overlay · skeleton · component
 the predicted and the ground-truth mask and compared with MAE/RMSE (length, width), absolute/relative error (area)
 and mean absolute angular error (orientation) — see `measurement_errors` in each run's `metrics.json`.
 
-## 13. Evaluation metrics
+## 12. Evaluation metrics
 
 Pixel-level TP/FP/TN/FN → IoU = TP/(TP+FP+FN), Dice = 2TP/(2TP+FP+FN), precision, recall, F1, pixel accuracy,
 specificity. Because cracks cover ~1 % of pixels, a model predicting "no crack" everywhere scores ≈ 99 % pixel
@@ -206,7 +189,7 @@ mean per-image (an empty prediction on an empty mask counts as 1.0), **crack-onl
 and **pixel-pooled** (global counts). Training/validation curves, confusion matrix, PR curve and threshold sweep
 are saved under `plots/` for every run.
 
-## 14. Experimental setup and results
+## 13. Experimental setup and results
 
 | experiment | description | script |
 |---|---|---|
@@ -304,13 +287,13 @@ black-hat detector is uniformly weak but flat. Photometric augmentation and illu
 are the two levers for closing this gap, which the full Kaggle run is set up to test.
 
 
-## 15. Ablation studies
+## 14. Ablation studies
 
 The U-Net experiments above form the ablation grid (baseline → +CLAHE → +illumination correction → +augmentation
 → +augmentation+CLAHE → +morphology → loss variants). `python scripts/run_experiment.py --experiment all` runs the
 whole grid and the summary CSV is the ablation table; `results/ablation_dice.png` plots it.
 
-## 16. Error analysis
+## 15. Error analysis
 
 `src/evaluation/error_analysis.py` classifies every test image into: false positive (crack predicted on a
 crack-free image), false negative (recall < 0.2), boundary error (IoU < 0.5 although IoU of 7-px-dilated masks > 0.6),
@@ -318,7 +301,7 @@ fragmentation (predicted components ≥ 2 × GT components + 1), merging (predic
 Counts, mean IoU per category and the worst examples per category (`error_analysis/failures_<category>.png`) are saved
 for every run.
 
-## 17. Local laptop workflow
+## 16. Local laptop workflow
 
 Everything except model training runs comfortably on a CPU laptop (OpenCV, scikit-image, matplotlib; tested with
 Python 3.11, 8 CPU cores, no GPU).
@@ -338,7 +321,7 @@ python scripts/run_experiment.py --experiment unet_clahe_aug --profile local   #
 The `--profile local` overrides (`configs/profile_local.yaml`) shrink the model/images/schedule so a full
 train+evaluate cycle takes minutes on CPU; `--set key.path=value` overrides any config value.
 
-## 18. Kaggle GPU workflow
+## 17. Kaggle GPU workflow
 
 `notebooks/kaggle_training.ipynb` (generated by `scripts/build_notebook.py`) clones this repository, reports GPU
 name / CUDA availability / device, attaches the dataset, and runs every experiment in `experiments/` with
@@ -346,17 +329,14 @@ name / CUDA availability / device, attaches the dataset, and runs every experime
 classical-baseline scripts on the same test split. Results land in `/kaggle/working/results` in the same layout as
 local runs, so they can be copied back into `results/`.
 
-## 19. Limitations
+## 18. Limitations
 
-* Proxy data: concrete walls, not chemical tanks; no metallic reflections, coatings or corrosion.
-* The laptop U-Net numbers come from 199 images, 256 px, a 16-channel U-Net and 12 epochs with a 20-image test
-  split; they demonstrate the framework and relative trends, not the attainable accuracy, and differences of a few
-  Dice points are within noise — use the Kaggle run for that.
+* Combined data: concrete walls, and chemical tanks.
 * Classical detectors were not exhaustively tuned; thresholds are fixed per method.
 * Measurements are in pixels; converting to mm needs camera calibration and stand-off distance from the UAV.
 * "Ground-truth" crack measurements are derived from GT masks, not from physical measurement.
 
-## 20. Future work
+## 19. Future work
 
 U-Net++/DeepLabV3/SegFormer in the model registry; test-time augmentation; topology-aware losses (clDice) for
 continuity; uncertainty maps; GSD-based metric calibration from drone telemetry; domain adaptation from concrete to

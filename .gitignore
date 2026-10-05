@@ -8,3 +8,4 @@ results/**/predictions/
 *.log
 .DS_Store
 crack_samples/
+guide.md
